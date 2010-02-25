@@ -9,8 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @interface TrendyViewController : UIViewController {
-
+    UIWebView *webView;
+    UIActivityIndicatorView *activityIndicator;
+    NSMutableData *downloadedData;
+    NSURL *baseURL;
+    NSURLConnection *connection;
 }
+
+@property(nonatomic, retain)IBOutlet UIWebView *webView;
+@property(nonatomic, retain)IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(nonatomic, retain)NSMutableData *downloadedData;
+@property(nonatomic, retain)NSURL *baseURL;
+@property(nonatomic, retain)NSURLConnection *connection;
+
+- (IBAction)getGoogle:(id)sender;
 
 @end
 
