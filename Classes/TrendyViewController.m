@@ -68,6 +68,11 @@
 
 
 #pragma mark IBAction
+- (IBAction)handleGoBack:(id)sender {
+    [self.webView goBack];    
+}
+
+
 - (IBAction)readTrendsFile:(id)sender {
     // NSURL *url = [[NSURL alloc] initWithString:@"http://google.com"];
     
@@ -102,8 +107,7 @@
 
 #pragma mark NSURLConnection delegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.downloadedData setLength:0];
-    
+    [self.downloadedData setLength:0];    
 }
 
 

@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* TrendyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* TrendyViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* TrendyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* TrendyViewController.m */; };
+		DEA33B9F113B7B8800057969 /* Trends.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33B9E113B7B8800057969 /* Trends.m */; };
 		DED660B5113B6DE600700128 /* trends_top.html in Resources */ = {isa = PBXBuildFile; fileRef = DED660B4113B6DE600700128 /* trends_top.html */; };
 		DED660B9113B6E0300700128 /* trends.html in Resources */ = {isa = PBXBuildFile; fileRef = DED660B8113B6E0300700128 /* trends.html */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Trendy_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trendy_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Trendy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Trendy-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DEA33B9D113B7B8800057969 /* Trends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trends.h; sourceTree = "<group>"; };
+		DEA33B9E113B7B8800057969 /* Trends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trends.m; sourceTree = "<group>"; };
 		DED660B4113B6DE600700128 /* trends_top.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trends_top.html; sourceTree = "<group>"; };
 		DED660B8113B6E0300700128 /* trends.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trends.html; sourceTree = "<group>"; };
 		DED660BA113B6E3100700128 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
@@ -60,6 +63,8 @@
 				1D3623250D0F684500981E51 /* TrendyAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* TrendyViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* TrendyViewController.m */,
+				DEA33B9D113B7B8800057969 /* Trends.h */,
+				DEA33B9E113B7B8800057969 /* Trends.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TrendyAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* TrendyViewController.m in Sources */,
+				DEA33B9F113B7B8800057969 /* Trends.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
