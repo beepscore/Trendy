@@ -11,7 +11,11 @@
 
 @implementation TrendyViewController
 
-@synthesize webView, activityIndicator, downloadedData, baseURL, connection;
+@synthesize webView;
+@synthesize activityIndicator;
+@synthesize downloadedData;
+@synthesize baseURL;
+@synthesize connection;
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -78,11 +82,14 @@
     
     NSString *trendsPath =[[NSBundle mainBundle]
                            pathForResource:@"trends" ofType:@"html"];
+    
     NSURL *url = [[NSURL alloc] initFileURLWithPath:trendsPath isDirectory:NO];
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    self.baseURL = url;
+    self.baseURL = url;    
     [url release], url = nil;
+    DLog(@"self.baseURL = %@", self.baseURL);
+
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.baseURL];
     
     // New data to download.
     NSMutableData *data = [[NSMutableData alloc] init];
@@ -105,7 +112,8 @@
 }
 
 
-#pragma mark NSURLConnection delegate
+#pragma mark -
+#pragma mark NSURLConnection delegate callbacks
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [self.downloadedData setLength:0];    
 }

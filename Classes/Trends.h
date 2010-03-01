@@ -10,12 +10,13 @@
 
 
 @interface Trends : NSObject {
-    NSMutableData *downloadedData;
     NSURL *baseURL;
     NSURLConnection *connection;
+    NSMutableString *resultsString;
+
 }
-@property(nonatomic, retain)NSMutableData *downloadedData;
 @property(nonatomic, retain)NSURL *baseURL;
 @property(nonatomic, retain)NSURLConnection *connection;
+@property(nonatomic, retain)NSMutableString *resultsString;
 
 @end
