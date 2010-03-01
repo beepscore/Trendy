@@ -7,6 +7,7 @@
 //
 
 #import "TrendyViewController.h"
+#import "Debug.h"
 
 @implementation TrendyViewController
 
@@ -29,12 +30,10 @@
  */
 
 
-/*
- // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
- - (void)viewDidLoad {
- [super viewDidLoad];
- }
- */
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];   
+}
 
 
 /*
@@ -62,8 +61,7 @@
     if (nil == newView) {
         self.webView = nil;
         self.activityIndicator = nil;
-    }
-    
+    }    
     [super setView:newView];
 }
 
@@ -77,11 +75,23 @@
     [super dealloc];
 }
 
-#pragma mark IBAction
+#pragma mark -
+#pragma mark handle UI inputs
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	// Return YES for supported orientations
+	return ((interfaceOrientation == UIInterfaceOrientationPortrait)
+            || (interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+            || (interfaceOrientation == UIInterfaceOrientationLandscapeRight));
+}
 
-- (IBAction)getGoogle:(id)sender
+#pragma mark IBAction
+- (IBAction)readTrendsFile:(id)sender
 {
-    NSURL *url = [[NSURL alloc] initWithString:@"http://google.com"];
+    NSString *trendsPath =[[NSBundle mainBundle]
+                           pathForResource:@"trends" ofType:@"html"];
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:trendsPath isDirectory:NO];
+    
+    //NSURL *url = [[NSURL alloc] initWithString:@"http://google.com"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     self.baseURL = url;
     [url release], url = nil;

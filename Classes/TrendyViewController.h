@@ -22,7 +22,7 @@
 @property(nonatomic, retain)NSURL *baseURL;
 @property(nonatomic, retain)NSURLConnection *connection;
 
-- (IBAction)getGoogle:(id)sender;
+- (IBAction)readTrendsFile:(id)sender;
 
 @end
 
