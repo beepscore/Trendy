@@ -8,6 +8,7 @@
 
 #import "TrendyViewController.h"
 #import "Debug.h"
+#import "Trends.h"
 
 @implementation TrendyViewController
 
@@ -16,12 +17,13 @@
 @synthesize downloadedData;
 @synthesize baseURL;
 @synthesize connection;
-
+@synthesize trends;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self readTrendsFile:self];
+    trends = [[Trends alloc] init];
+    [self updateTrends:self];
 }
 
 
@@ -45,6 +47,7 @@
     if (nil == newView) {
         self.webView = nil;
         self.activityIndicator = nil;
+        self.trends = nil;
     }    
     [super setView:newView];
 }
@@ -56,6 +59,7 @@
     [downloadedData release], downloadedData = nil;
     [connection release], connection = nil;
     [baseURL release], baseURL = nil;
+    [trends release], trends = nil;
     
     [super dealloc];
 }
@@ -77,7 +81,7 @@
 }
 
 
-- (IBAction)readTrendsFile:(id)sender {
+- (void)loadTrendsFile:(id)sender {
     // NSURL *url = [[NSURL alloc] initWithString:@"http://google.com"];
     
     NSString *trendsPath =[[NSBundle mainBundle]
@@ -109,6 +113,11 @@
     
     [newConnection release], newConnection = nil;
     [request release], request = nil;    
+}
+
+- (IBAction)updateTrends:(id)sender {
+    [self.trends updateTrendsFile:self];    
+    [self loadTrendsFile:self];
 }
 
 

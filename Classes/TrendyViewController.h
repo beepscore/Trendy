@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Trends;
 
 @interface TrendyViewController : UIViewController <UIWebViewDelegate>{
     UIWebView *webView;
@@ -14,6 +15,7 @@
     NSMutableData *downloadedData;
     NSURL *baseURL;
     NSURLConnection *connection;
+    Trends *trends;
 }
 
 @property(nonatomic, retain)IBOutlet UIWebView *webView;
@@ -21,9 +23,10 @@
 @property(nonatomic, retain)NSMutableData *downloadedData;
 @property(nonatomic, retain)NSURL *baseURL;
 @property(nonatomic, retain)NSURLConnection *connection;
+@property(nonatomic, retain)Trends *trends;
 
 - (IBAction)handleGoBack:(id)sender;
-- (IBAction)readTrendsFile:(id)sender;
+- (IBAction)updateTrends:(id)sender;
 
 @end
 

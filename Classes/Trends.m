@@ -14,12 +14,12 @@
 
 @synthesize baseURL;
 @synthesize connection;
-@synthesize resultsString;
+@synthesize trendsJSONString;
 
 - (void)dealloc {
     [connection release], connection = nil;
     [baseURL release], baseURL = nil;
-    [resultsString release], resultsString = nil;
+    [trendsJSONString release], trendsJSONString = nil;
     
     [super dealloc];
 }
@@ -80,7 +80,7 @@
 
 
 
-- (IBAction)getTrendsJSON:(id)sender {
+- (void)updateTrendsFile:(id)sender {
     NSURL *url = [[NSURL alloc] initWithString:@"http://search.twitter.com/trends.json"];
     
     self.baseURL = url;
@@ -91,7 +91,7 @@
 
     // New data to download.
     NSMutableString *tempString = [[NSMutableString alloc] init];
-    self.resultsString = tempString;
+    self.trendsJSONString = tempString;
     [tempString release], tempString = nil;
     
     NSURLConnection *newConnection = [[NSURLConnection alloc] 
@@ -108,6 +108,7 @@
     [request release], request = nil;    
 }
 
+
 #pragma mark -
 #pragma mark NSURLConnection delegate callbacks
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -120,7 +121,7 @@
                          initWithData:data
                          encoding:NSUTF8StringEncoding];
 	if (NULL != newText) {
-        [self.resultsString appendString:newText];
+        [self.trendsJSONString appendString:newText];
 		[newText release];
 	}    
 }
@@ -131,19 +132,24 @@
     // We no longer need the connection, data, or baseURL.
     self.connection = nil;
     self.baseURL = nil;
-    self.resultsString = nil;
+    self.trendsJSONString = nil;
 }
 
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    DLog(@"resultsString = %@", self.resultsString);
+
+    // alternate solution could message resultsString to webView
     
-    // TODO:  write html file here
-    // [self.webView loadData:self.downloadedData MIMEType:nil textEncodingName:nil baseURL:self.baseURL];
+    DLog(@"resultsString = %@", self.trendsJSONString);
+    // parse JSON string to dictionary
+    NSDictionary *trendsDictionary = [self trendsDictionaryForTrendsJSONString:self.trendsJSONString];
+
     // We no longer need the connection, data, or baseURL.
     self.connection = nil;
     self.baseURL = nil;
-    self.resultsString = nil;
+    self.trendsJSONString = nil;
+    
+    [self writeTrendsHTMLFileForDictionary:trendsDictionary];
 }
 
 @end

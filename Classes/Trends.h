@@ -12,11 +12,13 @@
 @interface Trends : NSObject {
     NSURL *baseURL;
     NSURLConnection *connection;
-    NSMutableString *resultsString;
+    NSMutableString *trendsJSONString;
 
 }
 @property(nonatomic, retain)NSURL *baseURL;
 @property(nonatomic, retain)NSURLConnection *connection;
-@property(nonatomic, retain)NSMutableString *resultsString;
+@property(nonatomic, retain)NSMutableString *trendsJSONString;
+
+- (void)updateTrendsFile:(id)sender;
 
 @end
