@@ -82,17 +82,20 @@
 
 
 - (void)loadTrendsFile:(id)sender {
-    // NSURL *url = [[NSURL alloc] initWithString:@"http://google.com"];
     
-    NSString *trendsPath =[[NSBundle mainBundle]
-                           pathForResource:@"trends" ofType:@"html"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    NSURL *url = [[NSURL alloc] initFileURLWithPath:trendsPath isDirectory:NO];
+    if (!documentsDirectory) {        
+        NSLog(@"Documents directory not found!");       
+    }    
+    NSString *trendsPath = [documentsDirectory stringByAppendingPathComponent:@"trends.html"];
     
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:trendsPath isDirectory:NO];    
     self.baseURL = url;    
     [url release], url = nil;
     DLog(@"self.baseURL = %@", self.baseURL);
-
+    
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.baseURL];
     
     // New data to download.
@@ -109,11 +112,11 @@
     } else {
         self.connection = newConnection;
         [self.activityIndicator startAnimating];
-    }
-    
+    }    
     [newConnection release], newConnection = nil;
     [request release], request = nil;    
 }
+
 
 - (IBAction)updateTrends:(id)sender {
     [self.trends updateTrendsFile:self];    

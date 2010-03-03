@@ -26,7 +26,6 @@
 		DEA77F48113B934600D98DA2 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA77F3E113B934600D98DA2 /* CSerializedJSONData.m */; };
 		DEA77F49113B934600D98DA2 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA77F40113B934600D98DA2 /* CDataScanner.m */; };
 		DED660B5113B6DE600700128 /* trends_top.html in Resources */ = {isa = PBXBuildFile; fileRef = DED660B4113B6DE600700128 /* trends_top.html */; };
-		DED660B9113B6E0300700128 /* trends.html in Resources */ = {isa = PBXBuildFile; fileRef = DED660B8113B6E0300700128 /* trends.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +63,6 @@
 		DEA77F3F113B934600D98DA2 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
 		DEA77F40113B934600D98DA2 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
 		DED660B4113B6DE600700128 /* trends_top.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trends_top.html; sourceTree = "<group>"; };
-		DED660B8113B6E0300700128 /* trends.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trends.html; sourceTree = "<group>"; };
 		DED660BA113B6E3100700128 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +127,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DED660B8113B6E0300700128 /* trends.html */,
 				DED660B4113B6DE600700128 /* trends_top.html */,
 				2899E5210DE3E06400AC0155 /* TrendyViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -234,7 +231,6 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* TrendyViewController.xib in Resources */,
 				DED660B5113B6DE600700128 /* trends_top.html in Resources */,
-				DED660B9113B6E0300700128 /* trends.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

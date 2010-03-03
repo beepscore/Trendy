@@ -48,7 +48,6 @@
     NSString *trendsTopPath =[[NSBundle mainBundle]
                               pathForResource:@"trends_top" ofType:@"html"];
     
-    
     NSMutableString *trendsHTMLString = [[NSMutableString alloc]
                                          initWithContentsOfFile:trendsTopPath
                                          encoding:NSUTF8StringEncoding
@@ -66,18 +65,22 @@
     [trendsHTMLString appendString:@"    </body>\n"];
     [trendsHTMLString appendString:@"</html>\n"];
     
-    DLog(@"trendsHTMLString = %@", trendsHTMLString);
+    // Write to application documents directory
+    // http://developer.apple.com/iphone/library/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/FilesandNetworking/FilesandNetworking.html#//apple_ref/doc/uid/TP40007072-CH21-SW6
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    NSString *trendsPath =[[NSBundle mainBundle]
-                           pathForResource:@"trends" ofType:@"html"];
-    
-    [trendsHTMLString writeToFile:trendsPath
-                       atomically:YES 
-                         encoding:NSUTF8StringEncoding 
-                            error:NULL];
+    if (!documentsDirectory) {        
+        NSLog(@"Documents directory not found!");       
+    }    
+    NSString *trendsPath = [documentsDirectory stringByAppendingPathComponent:@"trends.html"];    
+    BOOL wroteTrendsHTML = [trendsHTMLString writeToFile:trendsPath 
+                                              atomically:YES
+                                                encoding:NSUTF8StringEncoding 
+                                                   error:NULL];
+    DLog(@"wroteTrendsHTML = %u", wroteTrendsHTML);    
     [trendsHTMLString release];
 }
-
 
 
 - (void)updateTrendsFile:(id)sender {
@@ -88,7 +91,7 @@
     DLog(@"self.baseURL = %@", self.baseURL); 
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.baseURL];
-
+    
     // New data to download.
     NSMutableString *tempString = [[NSMutableString alloc] init];
     self.trendsJSONString = tempString;
@@ -137,13 +140,13 @@
 
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-
+    
     // alternate solution could message resultsString to webView
     
     DLog(@"resultsString = %@", self.trendsJSONString);
     // parse JSON string to dictionary
     NSDictionary *trendsDictionary = [self trendsDictionaryForTrendsJSONString:self.trendsJSONString];
-
+    
     // We no longer need the connection, data, or baseURL.
     self.connection = nil;
     self.baseURL = nil;
