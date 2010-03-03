@@ -54,7 +54,7 @@
                                          error:NULL];
     
     [trendsHTMLString appendString:@"        <ol>\n"];
-    
+
     for ( NSDictionary* trend in aTrendsDictionary ) {
         
         [trendsHTMLString appendFormat:@"            <li><a href=\"%@\">%@</a></li>\n", 

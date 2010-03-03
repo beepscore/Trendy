@@ -2,8 +2,20 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 	<head>
+        <!-- Safari supports CSS3 nth-child odd even -->
+        <style type="text/css">
+        body { font-family: Verdana; }
+        .heads_main { color: #555; }
+        li { font-size: 1.3em; }
+        li { margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 8px;
+            margin-left: 0px;}             
+        li:nth-child(odd) { background-color:#def; }
+        </style>
+        
 		<title>Twitter Trends</title>
 	</head>
-    <body style="-webkit-text-size-adjust:100%">
-        <h1>Twitter Trends</h1>
+      <body>
+        <h3 class=heads_main>Twitter Trends</h3>
 
