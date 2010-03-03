@@ -87,7 +87,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     if (!documentsDirectory) {        
-        NSLog(@"Documents directory not found!");       
+        DLog(@"Documents directory not found!");       
     }    
     NSString *trendsPath = [documentsDirectory stringByAppendingPathComponent:@"trends.html"];
     
@@ -108,7 +108,7 @@
                                       delegate:self 
                                       startImmediately:YES];
     if (nil == newConnection) {
-        NSLog(@"Could not create connection");
+        DLog(@"Could not create connection");
     } else {
         self.connection = newConnection;
         [self.activityIndicator startAnimating];
@@ -137,7 +137,7 @@
 
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Connection failed: %@", error);
+    DLog(@"Connection failed: %@", error);
     [self.activityIndicator stopAnimating];
     // We no longer need the connection, data, or baseURL.
     self.connection = nil;
@@ -153,6 +153,17 @@
     self.connection = nil;
     self.downloadedData = nil;
     self.baseURL = nil;
+}
+
+
+#pragma mark webView delegate methods
+- (void)webViewDidStartLoad:webView {
+    [self.activityIndicator startAnimating];
+}
+
+
+- (void)webViewDidFinishLoad:webView {
+    [self.activityIndicator stopAnimating];
 }
 
 @end

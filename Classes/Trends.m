@@ -71,7 +71,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     if (!documentsDirectory) {        
-        NSLog(@"Documents directory not found!");       
+        DLog(@"Documents directory not found!");       
     }    
     NSString *trendsPath = [documentsDirectory stringByAppendingPathComponent:@"trends.html"];    
     BOOL wroteTrendsHTML = [trendsHTMLString writeToFile:trendsPath 
@@ -102,7 +102,7 @@
                                       delegate:self 
                                       startImmediately:YES];
     if (nil == newConnection) {
-        NSLog(@"Could not create connection");
+        DLog(@"Could not create connection");
     } else {
         self.connection = newConnection;
     }
@@ -131,7 +131,7 @@
 
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Connection failed: %@", error);
+    DLog(@"Connection failed: %@", error);
     // We no longer need the connection, data, or baseURL.
     self.connection = nil;
     self.baseURL = nil;
