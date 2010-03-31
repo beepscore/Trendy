@@ -28,7 +28,7 @@
 
 
 #pragma mark -
-#pragma mark memory management
+#pragma mark Memory management
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -37,29 +37,23 @@
 }
 
 
+// Ref http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmNibObjects.html
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
-- (void)setView:(UIView *)newView {
-    if (nil == newView) {
-        self.webView = nil;
-        self.activityIndicator = nil;
-        self.trends = nil;
-    }    
-    [super setView:newView];
+    // Release any retained outlets
+    // set properties to nil, which also releases them
+    self.webView = nil;
+    self.activityIndicator = nil;
+    self.trends = nil;
+    
+    [super viewDidUnload];
 }
 
 
 - (void)dealloc {
-    [webView release], webView = nil;
-    [activityIndicator release], activityIndicator = nil;
     [downloadedData release], downloadedData = nil;
     [connection release], connection = nil;
     [baseURL release], baseURL = nil;
-    [trends release], trends = nil;
     
     [super dealloc];
 }
