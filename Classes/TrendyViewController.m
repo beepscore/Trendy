@@ -51,9 +51,12 @@
 
 
 - (void)dealloc {
+    [webView release], webView = nil;
+    [activityIndicator release], activityIndicator = nil;
     [downloadedData release], downloadedData = nil;
     [connection release], connection = nil;
     [baseURL release], baseURL = nil;
+    [trends release], trends = nil;
     
     [super dealloc];
 }
