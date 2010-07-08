@@ -10,11 +10,9 @@
 
 
 @interface Trends : NSObject {
-    NSURL *baseURL;
-    NSURLConnection *connection;
-    NSMutableString *trendsJSONString;
-
+    // Xcode automatically adds instance variables to back properties
 }
+
 @property(nonatomic, retain)NSURL *baseURL;
 @property(nonatomic, retain)NSURLConnection *connection;
 @property(nonatomic, retain)NSMutableString *trendsJSONString;

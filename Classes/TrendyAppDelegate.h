@@ -11,8 +11,7 @@
 @class TrendyViewController;
 
 @interface TrendyAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    TrendyViewController *viewController;
+    // Xcode automatically adds instance variables to back properties
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

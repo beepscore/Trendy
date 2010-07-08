@@ -10,12 +10,7 @@
 @class Trends;
 
 @interface TrendyViewController : UIViewController <UIWebViewDelegate>{
-    UIWebView *webView;
-    UIActivityIndicatorView *activityIndicator;
-    NSMutableData *downloadedData;
-    NSURL *baseURL;
-    NSURLConnection *connection;
-    Trends *trends;
+    // Xcode automatically adds instance variables to back properties
 }
 
 @property(nonatomic, retain)IBOutlet UIWebView *webView;
